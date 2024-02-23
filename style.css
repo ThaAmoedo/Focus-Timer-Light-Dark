@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --hue: 194;
+    --bk-color:hsl(var(--hue), 5%, 7%);
+    --text-color:hsl(var(--hue), 40%, 98%);
+    --primary-color:hsl(var(--hue),100%, 63%);
+    --controls-bk-color:hsl(var(--hue), 0%, 14%);
+    --button-secondary: hsl(var(--hue), 40%, 98%);
+
+
+   
+    font-size: clamp(40%, 1% + 2vw, 62.5%); /*minimo aceitavel é 40% e o ideal onde ele vai nagevar entre 1% mais (+) 2vw(sempre baseado na largura da tela) e o 62.5% será o máximo dele*/
+        /*se a soma/cálculo de 1% + 2vw for menor que 40% então mantém 40% agora se o cálculo for maior que  62.5% ele faz apenas até 62.5%*/ 
+}
+
+
+html.light{ /*no html o .light*/
+    --hue: 194; /*120*/
+    --text-color:hsl(var(--hue), 5%, 7%);
+    --bk-color:hsl(var(--hue), 40%, 98%);
+    --controls-bk-color:hsl(var(--hue), 0%, 14%);
+    --button-secondary: hsl(var(--hue), 40%, 98%);
+
+}
+
+html.light .ph-sun,
+html:not(.light) .ph-moon{
+    display: none;
+}
+
+
+#toggle-mode{ /*jogando o sol e a lua ptro top full direita*/
+    position: absolute;
+    right: 3.2rem;
+    top: 3.2rem;
+    font-size: 3.2rem;
+    line-height: 0; /*como nn tem texto eu posso tirar*/
+
+    color: var(--text-color);
+}
+
+
+/*Adicionando acessibilidade aos botões - ao clicar nele o narrador do modo "Acessibilidade" vai ler/falar "Ativar/Desativar Light Mode" que está escondido na tela, onde apenas o leitor de tela consegue ver/ler*/
+.sr-only{ /*se vc jogar no google "sr-only css" vai aparecer varias ideias (mantendo o site acessivel com algumas opçs)*/
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    overflow: hidden;
+
+    margin: -1px;
+    padding: 0px;
+    border: 0;
+    appearance: none;
+}
+
+
+body{
+    background-color: var(--bk-color);
+    color: var(--text-color);
+
+    display: grid;
+    height: 100vh;
+    place-content: center;
+}
+
+#app{
+    display: grid;
+    justify-items: center;
+}
+
+.flex{ /*class utilitária, posso chegar e usar ela emqualquer lugar q eu quiser depois*/
+    display: flex;
+}
+
+
+#timer {
+    font-size: 9.6rem;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+#controls{
+    margin-top: 1.6rem;
+    padding: 2.2rem 4rem;
+    gap: 1.6rem;
+    background-color: var(--controls-bk-color);
+    border-radius: 999rem;
+}
+
+button {
+    background-color: transparent;
+    border: 0;
+    color: var(--primary-color);
+
+    cursor: pointer;
+
+    font-size: 6.4rem;
+}
+
+.secondary{
+    color: var(--button-secondary);
+}
+
+
+/*controls*/
+.running .ph-play-circle,
+.running .ph-timer,
+.music-on .ph-speaker-none,
+html:not(.running) .ph-pause-circle, /*Diz: meu html não está rodando o .running então pegue meu .ph-pause-circle e desapareça com ele*/
+html:not(.running) .ph-stop-circle,
+html:not(.music-on) .ph-speaker-high {
+    display: none;
+}

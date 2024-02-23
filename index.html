@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Timer - Pomodoro</title>
+    
+    <meta name="description" content="Temporizador estilo pomodoro"> <!--- É A DESCRIÇÃO QUE APARECE NOS MOTORES DE BUSCA, SERVE TAMBÉM PRO MOTOR DE BUSCA PRA ACHAR MEU APLICATIVO --->
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/assets/favicon.svg" type="image/x-svg">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script> <!--puxando os icon do: https://phosphoricons.com/ -->
+    <script type="module" src="/src/main.js" defer></script> <!--defer = quando ele está presente em uma tag script ele vai esperar toda a página ser carregada para depois carregar o JavaScript-->
+</head>
+<body>
+
+    <div id="app">
+        <button id="toggle-mode" class="flex">
+          <span class="sr-only">Ativar Light Mode</span>
+            <i class="ph-bold ph-sun"></i>
+            <i class="ph-bold ph-moon"></i>
+        </button>
+
+        <section id="timer" class="flex">
+            <span id="minutes">00</span>
+            <span>:</span>
+            <span id="seconds">00</span>
+        </section>
+
+        <section id="controls" class="flex">
+            <button data-action="toggleRunning"  class="ph ph-play-circle"><span class="sr-only">Iniciar Contador</span></button> <!--play-->
+            <button data-action="toggleRunning"  class="ph ph-pause-circle"><span class="sr-only">Pausar Contador</span></button> <!--pause-->
+            <button data-action="set"            class="ph ph-timer secondary"><span class="sr-only">Ajustar Contador</span></button>  <!--set-->
+            <button data-action="reset"          class="ph ph-stop-circle secondary"><span class="sr-only">Parar ou Reiniciar Contador</span></button>  <!--stop-->
+            <button data-action="toggleMusic"    class="ph ph-speaker-none secondary"><span class="sr-only">Iniciar Música</span></button>  <!--musicon-->
+            <button data-action="toggleMusic"    class="ph ph-speaker-high"><span class="sr-only">Parar Música</span></button>  <!--musicoff-->
+        </section>
+    </div>
+
+
+
+</body>
+</html>
